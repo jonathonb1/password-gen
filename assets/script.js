@@ -25,11 +25,36 @@ function getPasswordOptions() {
     prompt('How many characters would you like your password to have?')
   );
 
-// CONDITIONAL STATEMENT CHEKCING IF PW LENGTH IS A NUMBER.  PROMPT WILL END OF FALSE
+// CHEKCK IF PW LENGTH IS A NUMBER.  WILL END OF FALSE
 if (isNaN(length)===true) {
-  alert('Password length must be numeric');
+  alert('Password length must be a number');
   return;
 }
+
+// CHECK IF PASSWORD IS AT LEAST 8 CHARACTERS LONG.
+if (length < 8) {
+  alert('Password must be at leaset 8 characters');
+}
+
+// STATEMENT TO CHECK IF PASSWORD IS LESS THAN 120 CHARACTERS LONG.  WILL END OF FALSE
+if (length > 120) {
+  alert('Password must be less than 120 characters')
+  return;
+}  
+
+// BOOLEAN FOR INCLUDING LOWERCASED LETTERS
+var withLowerCasedCharacters = confirm('Click OK if you woudl like lower cased letters in your password');
+
+// BOOLEAN FOR INCLUDING UPPERCASED LETTERS
+var withUpperCasedCharacters = confirm('Click ok if you would like upper cased letters in your password');
+
+// BOOLEAN FOR INCLUDING NUMBERS
+var withNumericCharacters = confirm('Click OK if you would like numbers in your password');
+
+// BOOLEAN FOR INCLUDING SPECIAL CHARACTERS
+var withSpecialCharacters = confirm('Click OK if you would like a special characters in your password');
+
+
 };
 
 console.log(getPasswordOptions)
