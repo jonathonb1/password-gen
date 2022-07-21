@@ -1,4 +1,4 @@
-# password-generator
+# Password-Generator
 
 ## Purpose
 To build a tool that will help to randomly generate a password based on user selections for which types of characters they would like the password to contain.
