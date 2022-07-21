@@ -111,8 +111,8 @@ if (length < 8) {
 }
 
 // STATEMENT TO CHECK IF PASSWORD IS LESS THAN 120 CHARACTERS LONG.  WILL END OF FALSE
-if (length > 120) {
-  alert('Password must be less than 120 characters')
+if (length > 128) {
+  alert('Password must be less than 128 characters')
   return;
 }  
 
