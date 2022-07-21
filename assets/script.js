@@ -107,6 +107,7 @@ if (isNaN(length)===true) {
 // CHECK IF PASSWORD IS AT LEAST 8 CHARACTERS LONG.
 if (length < 8) {
   alert('Password must be at leaset 8 characters');
+  return;
 }
 
 // STATEMENT TO CHECK IF PASSWORD IS LESS THAN 120 CHARACTERS LONG.  WILL END OF FALSE
@@ -158,60 +159,59 @@ function getRandom(arr) {
   return randElement;
 }
 
-// Function to generate password with user input
+// GENERATE PASSWORD FUNCTION
 function generatePassword() {
   var options = getPasswordOptions();
-  // Variable to store password as it's being concatenated
+  // STORING CONCATINATED PASSWORD
   var result = [];
 
-  // Array to store types of characters to include in password
+  // ARRAY STORING TYPES OF CHARACTERS IN PASSWORD
   var possibleCharacters = [];
 
-  // Array to contain one of each type of chosen character to ensure each will be used
+  // ARRAY STORING EACH TYPE OF CHARACTER USER CHOOSES
   var guaranteedCharacters = [];
 
-  // Conditional statement that adds array of special characters into array of possible characters based on user input
-  // Push new random special character to guaranteedCharacters
-  if (options.withSpecialCharacters) {
-    possibleCharacters = possibleCharacters.concat(specialCharacters);
-    guaranteedCharacters.push(getRandom(specialCharacters));
-  }
-
-  // Conditional statement that adds array of numeric characters into array of possible characters based on user input
-  // Push new random special character to guaranteedCharacters
-  if (options.withNumericCharacters) {
-    possibleCharacters = possibleCharacters.concat(numericCharacters);
-    guaranteedCharacters.push(getRandom(numericCharacters));
-  }
-
-  // Conditional statement that adds array of lowercase characters into array of possible characters based on user input
-  // Push new random lower-cased character to guaranteedCharacters
+  // CONDITIIONAL STATEMENT THAT ADDS ARRAY OF LOWERCASED LETTERS IF USER CHOOSES TO ADD LOWERCASED LETTERS INTO PASSWORD
   if (options.withLowerCasedCharacters) {
     possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
     guaranteedCharacters.push(getRandom(lowerCasedCharacters));
   }
 
-  // Conditional statement that adds array of uppercase characters into array of possible characters based on user input
-  // Push new random upper-cased character to guaranteedCharacters
+  // CONDITIONAL STATEMENT THAT ADDS THE ARRAY OF NUMBERS IF USER CHOOSES TO ADD UPPERCASED LETTERS INTO PASSWORD
+  // PUSH NEW RANDOM UPPERCASE LETTER INTO GARANTEEDCHARACTER
   if (options.withUpperCasedCharacters) {
     possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
     guaranteedCharacters.push(getRandom(upperCasedCharacters));
   }
 
-  // // For loop to iterate over the password length from the options object, selecting random indices from the array of possible characters and concatenating those characters into the result variable
-  // for (var i = 0; i < options.length; i++) {
-  //   var possibleCharacter = getRandom(possibleCharacters);
+  // CONDITIONAL STATEMENT THAT ADDS THE ARRAY OF NUMBERS IF USER SELECTS NUMBERS TO ADD INTO PASSWORD
+  // PUSH NEW RANDOM NUMBER INTO GARANTEEDCHARACTER
+  if (options.withNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+    guaranteedCharacters.push(getRandom(numericCharacters));
+  }
 
-  //   result.push(possibleCharacter);
-  // }
+  // CONDITIONAL STATEMENT THAT ADDS THE ARRAY OF SPECIAL CHARACTERS IF USER SELECTS SPECIAL CHARACTERS TO ADD INTO PASSWORD.
+  // PUSH RANDOM SPECIAL CHARACTER INTO GARANTEEDCHARACTERS
+  if (options.withSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+    guaranteedCharacters.push(getRandom(specialCharacters));
+  }
 
-  // // Mix in at least one of each guaranteed character in the result
-  // for (var i = 0; i < guaranteedCharacters.length; i++) {
-  //   result[i] = guaranteedCharacters[i];
-  // }
+  // FOR LOOP TO ITERATE OVER PW LENGTH FROM USER OPTIONS SELECTED - SELECTING RANDOM CHARACTERS FROM ARRAY OF AVAILABLE CHARACTERS
+  for (var i = 0; i < options.length; i++) {
+    var possibleCharacter = getRandom(possibleCharacters);
 
-  // // Transform the result into a string and pass into writePassword
-  // return result.join('');
+    result.push(possibleCharacter);
+  }
+
+  // PASSWORD TO HAVE AT LEAST ONE OF SELECTED CHARACTERS IN GENERATED PASSWORD.
+  for (var i = 0; i < guaranteedCharacters.length; i++) {
+    result[i] = guaranteedCharacters[i];
+  }
+
+  // TAKE ALL RESULTS AND FORM INTO A STRING
+  return result.join('');
 }
 
 // Get references to the #generate element
