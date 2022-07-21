@@ -94,7 +94,7 @@ var specialCharacters = [
 // PROMPT USER FOR PASSWORD OPTIONS
 function getPasswordOptions() {
   // VARIABLE TO STORE LENGTH OF PASSWORD
-  var length = parseInt(
+  var length = +(
     prompt('How many characters would you like your password to have?')
   );
 
