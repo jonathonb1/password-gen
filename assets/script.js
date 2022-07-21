@@ -15,16 +15,16 @@ function getPasswordOptions() {
   );
 
 if (isNaN(length)===true) {
-  alert('Password length must be a number');
+  alert('Your password length must be a number character');
   return;
 }
 if (length < 8) {
-  alert('Password must be at least 8 characters');
+  alert('Your password must be at least 8 characters');
   return;
 }
 
 if (length > 128) {
-  alert('Password must be less than 128 characters')
+  alert('Your password must be less than 128 characters')
   return;
 }  
 
